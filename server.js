@@ -55,7 +55,7 @@ app.get('/', function(req, res){
 });
 
 const validUrlChecker=/(^(https?:\/\/(?:www\.|(?!www)))?[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/
-const noturl=/(^(www\.[a-zA-Z0-9]+))/
+const noturl=/(^(www\.[a-zA-Z0-9]+))$/
 
 app.post("/api/shorturl/new",  function(req,res){
   var urlBody=req.body.url;
