@@ -103,10 +103,19 @@ app.get("/api/shorturl/:num", function(req,res,next){
        console.log("not found");
        res.status(404).json({"reason":"No Url Found"})
     }
+      
+    else if(doc===null){
+        res.status(404).json({"reason":"No Url Found in database"})
+    }
     else{
+      try{
       redirectUrl = doc.original_url;   
       if(!httpchecker.test(redirectUrl)){
         redirectUrl="https:\/\/"+redirectUrl;
+      }
+      } catch(err){
+        console.log(err);
+        res.status(500).json({"reason":"Server Error"})
       }
       next();
   }
